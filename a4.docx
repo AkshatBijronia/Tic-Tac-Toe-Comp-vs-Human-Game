@@ -1,0 +1,81 @@
+Line 1: import tkinter as tk
+
+This line imports the tkinter module, which is a Python binding to the Tk GUI toolkit. It's a standard library module that provides a way to create graphical user interfaces (GUIs) in Python. The as tk part assigns the alias tk to the tkinter module, so we can use tk instead of tkinter to access its components.
+
+Line 2: from tkinter import messagebox
+
+This line imports the messagebox module from tkinter. The messagebox module provides a way to display message boxes, which are pop-up windows that display a message to the user.
+
+Line 3: import random
+
+This line imports the random module, which provides a way to generate random numbers. We'll use this module to make the computer player's moves.
+
+Line 4: class TicTacToe:
+
+This line defines a new class called TicTacToe. This class will represent the Tic-Tac-Toe game.
+
+Line 5: def __init__(self):
+
+This line defines the constructor method of the TicTacToe class. The __init__ method is called when an instance of the class is created.
+
+Line 6: self.root = tk.Tk()
+
+This line creates a new instance of the Tk class, which is the main window of the GUI. We assign it to the self.root attribute.
+
+Line 7: self.root.title("Tic-Tac-Toe")
+
+This line sets the title of the main window to "Tic-Tac-Toe".
+
+Line 8: self.buttons = []
+
+This line initializes an empty list to store the buttons of the Tic-Tac-Toe grid.
+
+Line 9: self.current_player = "X"
+
+This line initializes the current player to "X".
+
+Line 10: self.winner = False
+
+This line initializes a flag to indicate whether the game has a winner.
+
+Line 11: self.label = None
+
+This line initializes a variable to store the label that displays the current player's turn.
+
+Line 12: self.create_widgets()
+
+This line calls the create_widgets method to create the GUI widgets.
+
+Line 13: def create_widgets(self):
+
+This line defines the create_widgets method.
+
+Line 14: self.buttons = [tk.Button(self.root, text="", font=("normal",25), width=6, height=2, command=lambda i=i: self.button_click(i)) for i in range(9)]
+
+This line creates a list of 9 buttons using a list comprehension. Each button is created with the tk.Button class, and its properties are set as follows: * text="": The button's text is initially empty. * font=("normal",25): The button's font is set to a normal font with size 25. * width=6 and height=2: The button's width and height are set to 6 and 2, respectively. * command=lambda i=i: self.button_click(i): The button's command is set to a lambda function that calls the button_click method with the button's index as an argument.
+
+Line 15: for i, button in enumerate(self.buttons):
+
+This line iterates over the list of buttons using the enumerate function, which returns both the index and the value of each element.
+
+Line 16: button.grid(row=i // 3, column=i % 3)
+
+This line places each button in a grid layout using the grid method. The row and column indices are calculated using integer division and modulo operations.
+
+Line 17: self.label = tk.Label(self.root, text=f"Player {self.current_player}'s turn", font=("normal", 16))
+
+This line creates a label to display the current player's turn.
+
+Line 18: self.label.grid(row=3, column=0, columnspan=3)
+
+This line places the label in the grid layout.
+
+Line 19: def check_winner(self):
+
+This line defines the check_winner method.
+
+Line 20-27: for combo in [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]:
+
+This line iterates over a list of winning combinations.
+
+Line 28: `if self.buttons[combo[0]]["text"] == self.buttons[combo[1]]["text"] == self.buttons[combo[2]]["text"] != "":
